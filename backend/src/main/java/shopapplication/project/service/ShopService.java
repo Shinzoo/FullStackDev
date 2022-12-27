@@ -6,28 +6,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import shopapplication.project.entities.Shop;
-import shopapplication.project.exceptions.BoutiqueNotFoundException;
+import shopapplication.project.exceptions.ShopNotFoundException;
 import shopapplication.project.repository.ShopRepository;
 
 @Service
 public class ShopService {
     
-    ShopRepository shopRepository;
+    private final ShopRepository shopRepository;
 
-    // public List<Shop> findByName(String name){
-    //     return shopRepository.findByName(name).get(); 
-    // }
-    public Shop getShopById(int id){
-        return shopRepository.findById(id).orElseThrow(() -> new BoutiqueNotFoundException("Boutique avec id "+id+" n'a pas été trouvée"));  
+    @Autowired
+    public ShopService(ShopRepository shopRepository){
+        this.shopRepository = shopRepository;
     }
 
-    public void saveOrUpdate(Shop shop)   
-    {  
-        shopRepository.save(shop);  
-    }  
+    public Shop addShop(Shop shop){
+        return shopRepository.save(shop);
+    }
 
-    public void delete(int id)   
-    {  
-        shopRepository.deleteById(id);  
-    }  
+    public List<Shop> findAllShop(){
+        return shopRepository.findAll();
+    }
+
+    public Shop updateShop(Shop shop){
+        return shopRepository.save(shop);
+    }
+
+    public Shop findShopById(Integer id){
+        return shopRepository.findShopById(id)
+                    .orElseThrow(() -> new ShopNotFoundException("Shop by id" + id + " was not found"));
+    }
+
+    public void deleteShop(Integer id){
+        shopRepository.deleteShopById(id);
+    }
 }

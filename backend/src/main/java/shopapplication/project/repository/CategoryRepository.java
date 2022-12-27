@@ -1,14 +1,12 @@
 package shopapplication.project.repository;
 
-
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import shopapplication.project.entities.Product;
-import shopapplication.project.entities.Shop;
+import shopapplication.project.entities.Category;
 
-@Repository
-public interface CategoryRepository extends JpaRepository<Shop, Long> {
-    Product findByName(String name);
-  }
+public interface CategoryRepository extends JpaRepository<Category,Integer> {
+    void deleteCategoryById(Integer id);
+    Optional<Category> findCategoryById(Integer id);
+}

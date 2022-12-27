@@ -1,31 +1,33 @@
 package shopapplication.project.entities;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
 
 @Entity
-@Table(name = "Product")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int productId;
-    @Column
+    @Column(nullable = false , updatable = false)
+    private int id;
     private String name;
-    @Column
     private Double price;
 
     public Product(int productId, String name, Double price){
-        this.productId = productId;
+        this.id = productId;
         this.name = name;
         this.price = price;
     }
 
     public int getProductId() {
-        return productId;
+        return id;
     }
 
     public void setProductId(int productId) {
-        this.productId = productId;
+        this.id = productId;
     }
 
     public String getName(){

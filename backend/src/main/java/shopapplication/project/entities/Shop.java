@@ -1,37 +1,39 @@
 package shopapplication.project.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "Shop")
-public class Shop {
+public class Shop implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int shopId;
-    @Column
+    @Column(nullable = false , updatable = false)
+    private int id;
     private String name;
-    @Column
     private Date dateOuverture;
-    @Column
     private boolean conge;
      
 
     public Shop(int shopId, String name, Date dateOuverture, boolean conge)
     {
-        this.shopId = shopId;
+        this.id = shopId;
         this.name = name;
         this.dateOuverture = dateOuverture;
         this.conge = conge;
     }
 
     public int getShopId() {
-        return shopId;
+        return id;
     }
     public void setShopId(int shopId) {
-        this.shopId = shopId;
+        this.id = shopId;
     }
 
     public String getName(){

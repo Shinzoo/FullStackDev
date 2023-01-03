@@ -20,6 +20,9 @@ public class Shop implements Serializable{
     private Date dateOuverture;
     private boolean conge;
      
+    public Shop(){
+        super();
+     }
 
     public Shop(int shopId, String name, Date dateOuverture, boolean conge)
     {
@@ -30,7 +33,7 @@ public class Shop implements Serializable{
     }
 
     public int getShopId() {
-        return id;
+        return this.id;
     }
     public void setShopId(int shopId) {
         this.id = shopId;

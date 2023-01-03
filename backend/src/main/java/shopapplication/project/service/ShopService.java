@@ -16,6 +16,7 @@ public class ShopService {
 
     @Autowired
     public ShopService(ShopRepository shopRepository){
+
         this.shopRepository = shopRepository;
     }
 

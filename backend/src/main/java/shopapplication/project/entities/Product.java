@@ -13,21 +13,35 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false , updatable = false)
     private int id;
+    private String shopId;
     private String name;
     private Double price;
 
-    public Product(int productId, String name, Double price){
+    public Product(){
+        super();
+     }
+
+    public Product(int productId, String shopId, String name, Double price){
         this.id = productId;
+        this.shopId = shopId;
         this.name = name;
         this.price = price;
     }
 
     public int getProductId() {
-        return id;
+        return this.id;
     }
 
     public void setProductId(int productId) {
         this.id = productId;
+    }
+
+    public String getShopId() {
+        return this.shopId;
+    }
+
+    public void setShopId(String shopId) {
+        this.shopId = shopId;
     }
 
     public String getName(){
